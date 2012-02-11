@@ -1,0 +1,13 @@
+<p>
+  <%= l(:text_letter_eater_setting_notice) %>
+</p>
+
+<p>
+  <label><%= l(:field_letter_eater_deny) %></label>
+  <%= text_area_tag('settings[deny]', @settings['deny'], :cols => 60, :rows => 10) %>
+</p>
+
+<p>
+  <label><%= l(:field_letter_eater_allow) %></label>
+  <%= text_area_tag('settings[allow]', @settings['allow'], :cols => 60, :rows => 10) %>
+</p>

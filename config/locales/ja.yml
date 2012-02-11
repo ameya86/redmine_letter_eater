@@ -1,0 +1,5 @@
+ja:
+  field_letter_eater_deny: 禁止するメールアドレス
+  field_letter_eater_allow: 許可するメールアドレス
+
+  text_letter_eater_setting_notice: "禁止、許可の順に判定を行い、許可と一致しないメールアドレスには送信しません。<br />禁止、許可ともに正規表現で記述してください。"

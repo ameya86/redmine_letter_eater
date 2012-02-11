@@ -1,0 +1,3 @@
+= Letter Eater
+
+メール送信先に対しての禁止（Deny）と許可（Allow）を設定できます。
