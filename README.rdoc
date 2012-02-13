@@ -1,3 +1,15 @@
 = Letter Eater
 
-���[�����M��ɑ΂��Ă̋֎~�iDeny�j�Ƌ��iAllow�j��ݒ�ł��܂��B
+メール送信先に対しての禁止（Deny）と許可（Allow）を設定できます。
+
+
+== 更新履歴
+
+=== version 0.0.2
+
+  メールが送信できなかったので修正
+
+
+=== version 0.0.1
+
+  リリース

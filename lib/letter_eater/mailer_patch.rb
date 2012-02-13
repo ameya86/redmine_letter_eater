@@ -15,12 +15,30 @@ end
 module LetterEaterMailerPatchMethod
   # Check deny and allow
   def create_mail_with_letter_eater
-    @block_mails = []
-    recipients.reject!{|mail| deny_or_allow(mail)}
-    cc.reject!{|mail| deny_or_allow(mail)} if cc
-    bcc.reject!{|mail| deny_or_allow(mail)} if bcc
+    block_mails = []
 
-    mylogger.info "Blocking email: #{@block_mails.join(', ')}" if mylogger && !@block_mails.empty?
+    recipients.reject! do |mail|
+      if deny_or_allow(mail)
+        block_mails << mail
+        true
+      end
+    end if recipients.present?
+
+    cc.reject! do |mail|
+      if deny_or_allow(mail)
+        block_mails << mail
+        true
+      end
+    end if cc.present?
+
+    bcc.reject! do |mail|
+      if deny_or_allow(mail)
+        block_mails << mail
+        true
+      end
+    end if bcc.present?
+
+    mylogger.info "Blocking email: #{block_mails.join(', ')}" if mylogger && !block_mails.empty?
 
     create_mail_without_letter_eater
   end
@@ -39,12 +57,7 @@ module LetterEaterMailerPatchMethod
       allow = allow_mail_address.detect{|allow| mail.match(allow)}
     end
 
-    if deny || !allow
-      @block_mails << mail
-      return true
-    end
-
-    return false
+    return deny || (!allow && !allow_mail_address.empty?)
   end
 
   # Create deny list
